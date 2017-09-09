@@ -2,6 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+// TODO
+// maybe change so the up vector of the transform is perpindicular to the floor
+// might remove the weird walking on slopes
 [RequireComponent(typeof(Rigidbody))]
 public class Controller3D : MonoBehaviour
 {
