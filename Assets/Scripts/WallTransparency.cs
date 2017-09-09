@@ -14,11 +14,13 @@ public class WallTransparency : MonoBehaviour
 
     private Dictionary<Transform, Material> _LastTransforms;
     private Dictionary<Transform, Color> _LastColor;
+    private Dictionary<Transform, Texture> _LastTexture;
 
     void Start()
     {
         _LastTransforms = new Dictionary<Transform, Material>();
         _LastColor = new Dictionary<Transform, Color>();
+        _LastTexture = new Dictionary<Transform, Texture>();
     }
 
     void Update()
@@ -42,6 +44,15 @@ public class WallTransparency : MonoBehaviour
             _LastColor.Clear();
         }
 
+        if (_LastTexture.Count > 0)
+        {
+            foreach (Transform t in _LastTexture.Keys)
+            {
+                t.GetComponent<Renderer>().material.mainTexture = _LastTexture[t];
+            }
+            _LastTexture.Clear();
+        }
+
         //Cast a ray from this object's transform the the watch target's transform.
         RaycastHit[] hits = Physics.RaycastAll(
             transform.position,
@@ -59,10 +70,13 @@ public class WallTransparency : MonoBehaviour
                 {
                     _LastTransforms.Add(hit.collider.gameObject.transform, hit.collider.gameObject.GetComponent<Renderer>().material);
                     _LastColor.Add(hit.collider.gameObject.transform, hit.collider.gameObject.GetComponent<Renderer>().material.color);
-                    hit.collider.gameObject.GetComponent<Renderer>().material = HiderMaterial;
-                    Color c = _LastColor[hit.collider.gameObject.transform];
+                    _LastTexture.Add(hit.collider.gameObject.transform, hit.collider.gameObject.GetComponent<Renderer>().material.mainTexture);
                     
+                    Color c = _LastColor[hit.collider.gameObject.transform];
+
+                    hit.collider.gameObject.GetComponent<Renderer>().material = HiderMaterial;
                     hit.collider.gameObject.GetComponent<Renderer>().material.color = new Color(c.r, c.g, c.b, HiderMaterial.color.a);
+                    hit.collider.gameObject.GetComponent<Renderer>().material.mainTexture = _LastTexture[hit.collider.gameObject.transform];
                 }
             }
         }
