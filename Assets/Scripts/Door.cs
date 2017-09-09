@@ -29,7 +29,6 @@ public class Door : MonoBehaviour
                 return;
         }
         // we can call level end sequence
-        Debug.Log("All lights lit");
         GetComponent<Renderer>().material.color = new Color(0, 1, 0, 1);
     }
 }
