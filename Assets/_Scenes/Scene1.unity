@@ -450,6 +450,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 12de0da3db55f494680a8540feee340c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  AudioClip: {fileID: 8300000, guid: d00859cbd9f645547903e7be82e54f1e, type: 3}
 --- !u!65 &695680493
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -869,6 +870,7 @@ MonoBehaviour:
   Lights:
   - {fileID: 1742754717}
   - {fileID: 695680492}
+  AudioClip: {fileID: 8300000, guid: d00859cbd9f645547903e7be82e54f1e, type: 3}
 --- !u!23 &1393195366
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -1057,6 +1059,11 @@ Prefab:
       propertyPath: m_RootOrder
       value: 7
       objectReference: {fileID: 0}
+    - target: {fileID: 114525076298769804, guid: c48e934fad9178544b9c76d1510a99fe,
+        type: 2}
+      propertyPath: AudioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: d00859cbd9f645547903e7be82e54f1e, type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: c48e934fad9178544b9c76d1510a99fe, type: 2}
   m_IsPrefabParent: 0

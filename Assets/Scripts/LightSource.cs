@@ -1,6 +1,9 @@
 ﻿using UnityEngine;
 
-public class LightSource : MonoBehaviour {
+public class LightSource : MonoBehaviour
+{
+    private AudioSource _source;
+    public AudioClip AudioClip;
 
     public bool Enabled
     {
@@ -11,8 +14,9 @@ public class LightSource : MonoBehaviour {
 
     // Use this for initialization
 	void Start ()
-    {
-		
+	{
+	    //_source = GetComponent<AudioSource>();
+	    _source = gameObject.AddComponent<AudioSource>();
 	}
 	
 	// Update is called once per frame
@@ -23,10 +27,11 @@ public class LightSource : MonoBehaviour {
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Player"))
+        if (other.CompareTag("Player") && !GetComponent<Light>().enabled)
         {
             GetComponent<Light>().enabled = true;
             Door.CheckLevelComplete();
+            _source.PlayOneShot(AudioClip);
         }
     }
 

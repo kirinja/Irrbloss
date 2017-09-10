@@ -2,7 +2,9 @@
 
 public class Door : MonoBehaviour
 {
+    private AudioSource _source;
     public LightSource[] Lights;
+    public AudioClip AudioClip;
 
 	// Use this for initialization
 	void Start ()
@@ -11,7 +13,8 @@ public class Door : MonoBehaviour
         {
             l.Door = this;
         }
-	}
+        _source = gameObject.AddComponent<AudioSource>();
+    }
 	
 	// Update is called once per frame
 	void Update () {
@@ -27,5 +30,6 @@ public class Door : MonoBehaviour
         }
         // we can call level end sequence
         GetComponent<Renderer>().material.color = new Color(0, 1, 0, 1);
+        _source.PlayOneShot(AudioClip);
     }
 }
