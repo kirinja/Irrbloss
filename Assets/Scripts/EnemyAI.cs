@@ -7,6 +7,8 @@ public class EnemyAI : MonoBehaviour
     private int _currentTarget = 0;
     public Transform[] Targets;
 
+    public float AggroLightLevel = 0.75f;
+
     // enemy uses a cone infront to try and detect player
     public float ConeAngle = 35.0f;
     public float ConeLength = 1.5f;
@@ -85,7 +87,7 @@ public class EnemyAI : MonoBehaviour
         var rayForward = new Ray(transform.position, transform.forward);
 
         // we need to check and compare if the players light level is high enough for the enemy to actually see the player
-        var playerLight = _player.LightLevel >= 0.75f;
+        var playerLight = _player.LightLevel >= AggroLightLevel;
 
         var foundPlayer = Physics.Raycast(rayLeft, ConeLength);
         if (foundPlayer && playerLight)
@@ -105,7 +107,11 @@ public class EnemyAI : MonoBehaviour
         if (other.transform.CompareTag("Player"))
         {
             // Kill player
-            Debug.Log("Kill player");
+            if (_player.LightLevel >= AggroLightLevel)
+            {
+                _player.Kill();
+                Debug.Log("Kill player");
+            }
         }
     }
 }

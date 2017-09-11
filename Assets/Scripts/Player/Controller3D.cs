@@ -17,11 +17,14 @@ public class Controller3D : MonoBehaviour
     public float LightTickRate = 20; // amount of times we update the light per second (ie 20 hz)
     public float LightLevel { get; set; }
 
+    private Vector3 _spawnPoint;
+
     // Use this for initialization
     void Start ()
 	{
 	    _velocity = Vector3.zero;
 	    LightLevel = 1.0f;
+	    _spawnPoint = transform.position;
 	}
 	
 	// Update is called once per frame
@@ -92,7 +95,14 @@ public class Controller3D : MonoBehaviour
     {
         if (Math.Abs(LightLevel) < 0.0001f)
             return;
+        // need to fix the light level decrement/increment
         LightLevel -= 0.01f;
         Debug.Log(LightLevel);
+    }
+
+    public void Kill()
+    {
+        // respawn
+        transform.position = _spawnPoint;
     }
 }
