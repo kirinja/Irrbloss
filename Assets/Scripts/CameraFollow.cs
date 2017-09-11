@@ -25,7 +25,7 @@ public class CameraFollow : MonoBehaviour
 	// Update is called once per frame
 	void Update ()
 	{
-        /* // testing camera angles
+        // testing camera angles
         if (Input.GetKeyDown(KeyCode.Alpha1))
             ChangeAngle(CameraDirection.Front);
         if (Input.GetKeyDown(KeyCode.Alpha2))
@@ -34,7 +34,7 @@ public class CameraFollow : MonoBehaviour
             ChangeAngle(CameraDirection.Left);
         if (Input.GetKeyDown(KeyCode.Alpha4))
             ChangeAngle(CameraDirection.Right);
-        */
+        
 
         transform.position = _player.position - CameraOffset;
 	}

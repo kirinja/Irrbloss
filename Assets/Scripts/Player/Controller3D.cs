@@ -1,8 +1,10 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
 // TODO
 // maybe change so the up vector of the transform is perpindicular to the floor
 // might remove the weird walking on slopes
+// - need to be able to change light levels of the player
 [RequireComponent(typeof(Rigidbody))]
 public class Controller3D : MonoBehaviour
 {
@@ -10,16 +12,27 @@ public class Controller3D : MonoBehaviour
 
     public float MaxSpeed = 5.0f;
     public float TurnSmoothing = 15f; // A smoothing value for turning the player.
+    public float MaxLightLevel = 1.0f;
+    public float LightPerTick = 0.1f;
+    public float LightTickRate = 20; // amount of times we update the light per second (ie 20 hz)
+    public float LightLevel { get; set; }
 
     // Use this for initialization
     void Start ()
 	{
 	    _velocity = Vector3.zero;
+	    LightLevel = 1.0f;
 	}
 	
 	// Update is called once per frame
 	void Update ()
     {
+        // TEMP change the light level manually
+        if (Input.GetKeyDown(KeyCode.Keypad3))
+            IncreaseLight();
+        else if (Input.GetKeyDown(KeyCode.Keypad1))
+            DecreaseLight();
+
         // we need to translate the input vector to depend on how the camera is rotated
         Vector3 input = new Vector3(Input.GetAxisRaw("Horizontal"), 0f, Input.GetAxisRaw("Vertical")).normalized;
         
@@ -65,5 +78,21 @@ public class Controller3D : MonoBehaviour
 
         // Change the players rotation to this new rotation.
         transform.GetComponent<Rigidbody>().MoveRotation(newRotation);
+    }
+
+    void IncreaseLight()
+    {
+        if (Math.Abs(LightLevel - MaxLightLevel) < 0.0001f)
+            return;
+        LightLevel += 0.01f;
+        Debug.Log(LightLevel);
+    }
+
+    void DecreaseLight()
+    {
+        if (Math.Abs(LightLevel) < 0.0001f)
+            return;
+        LightLevel -= 0.01f;
+        Debug.Log(LightLevel);
     }
 }

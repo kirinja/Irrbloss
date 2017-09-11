@@ -4,6 +4,7 @@ public class LightSource : MonoBehaviour
 {
     private AudioSource _source;
     public AudioClip AudioClip;
+    public float LightLevelToActivate = 0.90f;
 
     public bool Enabled
     {
@@ -15,7 +16,6 @@ public class LightSource : MonoBehaviour
     // Use this for initialization
 	void Start ()
 	{
-	    //_source = GetComponent<AudioSource>();
 	    _source = gameObject.AddComponent<AudioSource>();
 	}
 	
@@ -29,9 +29,12 @@ public class LightSource : MonoBehaviour
     {
         if (other.CompareTag("Player") && !GetComponent<Light>().enabled)
         {
-            GetComponent<Light>().enabled = true;
-            Door.CheckLevelComplete();
-            _source.PlayOneShot(AudioClip);
+            if (other.GetComponent<Controller3D>().LightLevel >= LightLevelToActivate)
+            {
+                GetComponent<Light>().enabled = true;
+                Door.CheckLevelComplete();
+                _source.PlayOneShot(AudioClip);
+            }
         }
     }
 
