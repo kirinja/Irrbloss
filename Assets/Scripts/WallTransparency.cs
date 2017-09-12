@@ -4,7 +4,7 @@ using System.Collections.Generic;
 public class WallTransparency : MonoBehaviour
 {
 
-    public Transform WatchTarget;
+    private Transform WatchTarget;
     public LayerMask OccluderMask;
     //This is the material with the Transparent/Diffuse With Shadow shader
     public Material HiderMaterial;
@@ -18,6 +18,8 @@ public class WallTransparency : MonoBehaviour
         _lastTransforms = new Dictionary<Transform, Material>();
         _lastColor = new Dictionary<Transform, Color>();
         _lastTexture = new Dictionary<Transform, Texture>();
+
+        WatchTarget = GameObject.FindGameObjectWithTag("Player").transform;
     }
 
     void Update()
