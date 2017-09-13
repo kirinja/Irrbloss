@@ -478,7 +478,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &695680492
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1099,11 +1099,6 @@ Prefab:
       propertyPath: m_RootOrder
       value: 7
       objectReference: {fileID: 0}
-    - target: {fileID: 114525076298769804, guid: c48e934fad9178544b9c76d1510a99fe,
-        type: 2}
-      propertyPath: AudioClip
-      value: 
-      objectReference: {fileID: 8300000, guid: d00859cbd9f645547903e7be82e54f1e, type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: c48e934fad9178544b9c76d1510a99fe, type: 2}
   m_IsPrefabParent: 0

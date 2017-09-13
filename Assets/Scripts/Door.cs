@@ -11,7 +11,8 @@ public class Door : MonoBehaviour
     {
         foreach (var l in Lights)
         {
-            l.Door = this;
+            //l.Door = this;
+            l.AddDoor(this);
         }
         _source = gameObject.AddComponent<AudioSource>();
     }
@@ -29,7 +30,9 @@ public class Door : MonoBehaviour
                 return;
         }
         // we can call level end sequence
-        GetComponent<Renderer>().material.color = new Color(0, 1, 0, 1);
+        //GetComponent<Renderer>().material.color = new Color(0, 1, 0, 1);
         _source.PlayOneShot(AudioClip);
+        GetComponent<Renderer>().enabled = false;
+        GetComponent<Collider>().enabled = false;
     }
 }

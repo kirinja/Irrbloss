@@ -1,4 +1,7 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using System.Collections.Generic;
+using NUnit.Framework.Constraints;
+using UnityEngine;
 
 public class LightSource : MonoBehaviour
 {
@@ -6,17 +9,28 @@ public class LightSource : MonoBehaviour
     public AudioClip AudioClip;
     public float LightLevelToActivate = 0.90f;
 
+    private ParticleSystem _particleSystem;
+
     public bool Enabled
     {
         get { return GetComponent<Light>().enabled; }
     }
 
-    public Door Door { private get; set; }
+    // need to change this from a single reference to an array of references
+    //public Door Door { private get; set; }
+    
+    private readonly List<Door> _doors = new List<Door>();
+
+    public void AddDoor(Door door)
+    {
+        _doors.Add(door);
+    }
 
     // Use this for initialization
 	void Start ()
 	{
 	    _source = gameObject.AddComponent<AudioSource>();
+	    _particleSystem = GetComponentInChildren<ParticleSystem>();
 	}
 	
 	// Update is called once per frame
@@ -31,8 +45,13 @@ public class LightSource : MonoBehaviour
         {
             if (other.GetComponent<Controller3D>().LightLevel >= LightLevelToActivate)
             {
+                _particleSystem.Play(true);
                 GetComponent<Light>().enabled = true;
-                Door.CheckLevelComplete();
+                foreach (var d in _doors)
+                {
+                    d.CheckLevelComplete();
+                }
+                //Door.CheckLevelComplete();
                 _source.PlayOneShot(AudioClip);
             }
         }
