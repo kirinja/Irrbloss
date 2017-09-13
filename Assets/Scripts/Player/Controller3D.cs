@@ -31,9 +31,16 @@ public class Controller3D : MonoBehaviour
 	void Update ()
     {
         // TEMP change the light level manually
-        if (Input.GetKeyDown(KeyCode.Keypad3))
+        //if (Input.GetKeyDown(KeyCode.Keypad3))
+        //    IncreaseLight();
+        //else if (Input.GetKeyDown(KeyCode.Keypad1))
+        //    DecreaseLight();
+
+        var t = Input.GetAxisRaw("Mouse ScrollWheel");
+        //Debug.Log(t);
+        if (Math.Sign(t) >= 1)
             IncreaseLight();
-        else if (Input.GetKeyDown(KeyCode.Keypad1))
+        else if (Math.Sign(t) <= -1)
             DecreaseLight();
 
         // we need to translate the input vector to depend on how the camera is rotated
