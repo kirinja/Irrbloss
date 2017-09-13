@@ -5,6 +5,7 @@ public class Door : MonoBehaviour
     private AudioSource _source;
     public LightSource[] Lights;
     public AudioClip AudioClip;
+    public bool EndLevel = false;
 
 	// Use this for initialization
 	void Start ()
@@ -32,7 +33,15 @@ public class Door : MonoBehaviour
         // we can call level end sequence
         //GetComponent<Renderer>().material.color = new Color(0, 1, 0, 1);
         _source.PlayOneShot(AudioClip);
-        GetComponent<Renderer>().enabled = false;
-        GetComponent<Collider>().enabled = false;
+        if (EndLevel)
+        {
+            GetComponent<Renderer>().enabled = true;
+            GetComponent<Collider>().enabled = true;
+        }
+        else
+        {
+            GetComponent<Renderer>().enabled = false;
+            GetComponent<Collider>().enabled = false;
+        }
     }
 }
