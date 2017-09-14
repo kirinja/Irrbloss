@@ -6111,6 +6111,16 @@ Prefab:
       propertyPath: VerticalSensitivity
       value: 80
       objectReference: {fileID: 0}
+    - target: {fileID: 20783117025328384, guid: ea7486cb2428eb64c94bbf1361c6e084,
+        type: 2}
+      propertyPath: m_RenderingPath
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 20783117025328384, guid: ea7486cb2428eb64c94bbf1361c6e084,
+        type: 2}
+      propertyPath: m_AllowMSAA
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: ea7486cb2428eb64c94bbf1361c6e084, type: 2}
   m_IsPrefabParent: 0
@@ -6460,6 +6470,23 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1941822676 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1536082776202962, guid: ea7486cb2428eb64c94bbf1361c6e084,
+    type: 2}
+  m_PrefabInternal: {fileID: 1871656077}
+--- !u!114 &1941822684
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1941822676}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ff26db721962cdf4a8edcdfa9a767d2a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  profile: {fileID: 11400000, guid: 6162feb4497165c4386668f7fd1f0546, type: 2}
 --- !u!1 &1989563405
 GameObject:
   m_ObjectHideFlags: 0
