@@ -607,11 +607,6 @@ Prefab:
       propertyPath: m_RootOrder
       value: 6
       objectReference: {fileID: 0}
-    - target: {fileID: 54187060360101904, guid: e2caba2940d39b34bb887242e42e032e,
-        type: 2}
-      propertyPath: m_Constraints
-      value: 112
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: e2caba2940d39b34bb887242e42e032e, type: 2}
   m_IsPrefabParent: 0
@@ -911,6 +906,7 @@ MonoBehaviour:
   - {fileID: 1742754717}
   - {fileID: 695680492}
   AudioClip: {fileID: 8300000, guid: d00859cbd9f645547903e7be82e54f1e, type: 3}
+  EndLevel: 0
 --- !u!23 &1393195366
 MeshRenderer:
   m_ObjectHideFlags: 0
