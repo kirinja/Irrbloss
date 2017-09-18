@@ -18,6 +18,7 @@ public class Controller3D : MonoBehaviour
     public float LightLevel { get; set; }
 
     private Vector3 _spawnPoint;
+    private Vector3 _input;
 
     // Use this for initialization
     void Start ()
@@ -25,6 +26,9 @@ public class Controller3D : MonoBehaviour
 	    _velocity = Vector3.zero;
 	    LightLevel = 1.0f;
 	    _spawnPoint = transform.position;
+
+	    Cursor.lockState = CursorLockMode.Locked;
+	    Cursor.visible = false;
 	}
 	
 	// Update is called once per frame
@@ -44,11 +48,15 @@ public class Controller3D : MonoBehaviour
             DecreaseLight();
 
         // we need to translate the input vector to depend on how the camera is rotated
-        Vector3 input = new Vector3(Input.GetAxisRaw("Horizontal"), 0f, Input.GetAxisRaw("Vertical")).normalized;
+        _input = new Vector3(Input.GetAxisRaw("Horizontal"), 0f, Input.GetAxisRaw("Vertical")).normalized;
         
+        _velocity = _input * MaxSpeed;
+    }
 
-        _velocity = input * MaxSpeed;
-        MovementManagement(input);
+    void LateUpdate()
+    {
+
+        MovementManagement(_input);
         //Move();
         transform.GetComponent<Rigidbody>().position = transform.position;
     }

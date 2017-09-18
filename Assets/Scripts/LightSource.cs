@@ -35,7 +35,22 @@ public class LightSource : MonoBehaviour
 	// Update is called once per frame
 	void Update ()
     {
-		
+        if (Input.GetKeyDown(KeyCode.P))
+        {
+            _enabled = true; // have to do this before we tell the doors to check if we can disable them
+            foreach (var d in _doors)
+            {
+                d.CheckLevelComplete();
+            }
+            _particleSystem.Play(true);
+            var child = transform.Find("PS_Light02");
+            var ps = child.Find("Cirlce01");
+            ps.GetComponent<ParticleSystem>().Play(true);
+            //GetComponent<Light>().enabled = true;
+
+            //Door.CheckLevelComplete();
+            _source.PlayOneShot(AudioClip);
+        }
 	}
 
     private void OnTriggerEnter(Collider other)
