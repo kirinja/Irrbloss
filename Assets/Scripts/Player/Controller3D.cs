@@ -112,4 +112,11 @@ public class Controller3D : MonoBehaviour
         // respawn
         transform.position = _spawnPoint;
     }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        // put player outside of the wall we collided with
+    }
+
+
 }
