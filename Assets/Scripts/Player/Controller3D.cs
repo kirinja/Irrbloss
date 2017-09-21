@@ -41,6 +41,9 @@ public class Controller3D : MonoBehaviour
 	// Update is called once per frame
 	void Update ()
     {
+        if (Input.GetKeyDown(KeyCode.Escape))
+            Application.Quit();
+
         // TEMP change the light level manually
         //if (Input.GetKeyDown(KeyCode.Keypad3))
         //    IncreaseLight();
