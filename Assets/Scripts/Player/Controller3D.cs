@@ -20,6 +20,9 @@ public class Controller3D : MonoBehaviour
     private Vector3 _spawnPoint;
     private Vector3 _input;
 
+    private ParticleSystem _ps;
+    private ParticleSystem.LightsModule _lights;
+
     // Use this for initialization
     void Start ()
 	{
@@ -29,6 +32,10 @@ public class Controller3D : MonoBehaviour
 
 	    Cursor.lockState = CursorLockMode.Locked;
 	    Cursor.visible = false;
+
+	    _ps = transform.Find("PS_ElectricOrb").transform.Find("Circle").GetComponent<ParticleSystem>();
+
+	    _lights = _ps.lights;
 	}
 	
 	// Update is called once per frame
@@ -103,6 +110,7 @@ public class Controller3D : MonoBehaviour
         if (Math.Abs(LightLevel - MaxLightLevel) < 0.0001f)
             return;
         LightLevel += 0.01f;
+        _lights.ratio = LightLevel;
         Debug.Log(LightLevel);
     }
 
@@ -112,6 +120,7 @@ public class Controller3D : MonoBehaviour
             return;
         // need to fix the light level decrement/increment
         LightLevel -= 0.01f;
+        _lights.ratio = LightLevel;
         Debug.Log(LightLevel);
     }
 

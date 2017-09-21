@@ -19,6 +19,8 @@ public class EnemyAI : MonoBehaviour
     private Controller3D _player;
     private float _speed;
 
+    private bool _countUp = true;
+
 	// Use this for initialization
     void Start()
     {
@@ -57,11 +59,18 @@ public class EnemyAI : MonoBehaviour
 	    }
         else if (t <= 0.5f)
 	    {
-	        _currentTarget++;
-	        if (_currentTarget >= Targets.Length)
-	            _currentTarget = 0;
+	        if (_currentTarget >= Targets.Length-1)
+	            _countUp = false;
+	        else if (_currentTarget <= 0)
+	            _countUp = true;
 
-	        _agent.destination = Targets[_currentTarget].position;
+	        if (_countUp)
+	            _currentTarget++;
+	        else
+	            _currentTarget--;
+            //_currentTarget = 0;
+
+            _agent.destination = Targets[_currentTarget].position;
 	        _currentChaseDistance = 0;
 	        _agent.speed = _speed;
 	    }
@@ -74,6 +83,10 @@ public class EnemyAI : MonoBehaviour
         
 	}
 
+    /// <summary>
+    /// slightly buggy
+    /// </summary>
+    /// <returns></returns>
     bool CheckAggro()
     {
         // we're gonna raycast in a cone infront of the enemy and check if we hit the player
