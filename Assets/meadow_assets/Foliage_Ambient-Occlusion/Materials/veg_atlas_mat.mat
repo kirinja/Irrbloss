@@ -26,7 +26,7 @@ Material:
     - _AO: 0
     - _BaseLight: 0
     - _Cutoff: 0.25
-    - _Occlusion: 10.4
+    - _Occlusion: 0
     - _SquashAmount: 1
     m_Colors:
     - _Color: {r: 1, g: 1, b: 1, a: 0}
