@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 using UnityEngine.AI;
 
 public class EnemyAI : MonoBehaviour
@@ -20,6 +21,8 @@ public class EnemyAI : MonoBehaviour
     private float _speed;
 
     private bool _countUp = true;
+
+    public String SubtitleSound;
 
 	// Use this for initialization
     void Start()

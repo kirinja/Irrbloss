@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class LightSource : MonoBehaviour
@@ -9,6 +10,7 @@ public class LightSource : MonoBehaviour
     private bool _enabled = false;
     private ParticleSystem _particleSystem;
 
+    public String SubtitleSound;
     public bool Enabled
     {
         //get { return GetComponent<Light>().enabled; }

@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
 public class Door : MonoBehaviour
 {
@@ -6,6 +7,8 @@ public class Door : MonoBehaviour
     public LightSource[] Lights;
     public AudioClip AudioClip;
     public bool EndLevel = false;
+
+    public String SubtitleSound;
 
 	// Use this for initialization
 	void Start ()
