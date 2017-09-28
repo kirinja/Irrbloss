@@ -10,7 +10,8 @@ public class LightSource : MonoBehaviour
     private bool _enabled = false;
     private ParticleSystem _particleSystem;
 
-    public String SubtitleSound;
+    //public String SubtitleSound;
+    private SubtitleComponent _subtitleComponent;
     public bool Enabled
     {
         //get { return GetComponent<Light>().enabled; }
@@ -30,6 +31,7 @@ public class LightSource : MonoBehaviour
     // Use this for initialization
 	void Start ()
 	{
+	    _subtitleComponent = GetComponent<SubtitleComponent>();
 	    _source = gameObject.AddComponent<AudioSource>();
 	    _particleSystem = GetComponentInChildren<ParticleSystem>();
 	}
@@ -57,7 +59,7 @@ public class LightSource : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Player") && !Enabled)
+        if (other.CompareTag("Player") && !Enabled && !other.isTrigger)
         {
             if (other.GetComponent<Controller3D>().LightLevel >= LightLevelToActivate)
             {
@@ -65,7 +67,9 @@ public class LightSource : MonoBehaviour
                 foreach (var d in _doors)
                 {
                     d.CheckLevelComplete();
+                    d.DoorSubtitles(other);
                 }
+                
                 _particleSystem.Play(true);
                 var child = transform.Find("PS_Light02");
                 var ps = child.Find("Cirlce01");
@@ -74,6 +78,7 @@ public class LightSource : MonoBehaviour
                 
                 //Door.CheckLevelComplete();
                 _source.PlayOneShot(AudioClip);
+                other.GetComponent<SubtitleSystem>().AddSubtitle(_subtitleComponent);
             }
         }
     }

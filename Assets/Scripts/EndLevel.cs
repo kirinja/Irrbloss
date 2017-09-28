@@ -26,7 +26,7 @@ public class EndLevel : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Player"))
+        if (other.CompareTag("Player") && !other.isTrigger)
         {
             Text.gameObject.SetActive(true);
             other.attachedRigidbody.useGravity = false;

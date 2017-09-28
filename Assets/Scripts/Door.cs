@@ -8,11 +8,15 @@ public class Door : MonoBehaviour
     public AudioClip AudioClip;
     public bool EndLevel = false;
 
-    public String SubtitleSound;
+    //public String SubtitleSound;
+    private SubtitleComponent _subtitleComponent;
+
+    private bool _triggered = false;
 
 	// Use this for initialization
 	void Start ()
-    {
+	{
+	    _subtitleComponent = GetComponent<SubtitleComponent>();
         foreach (var l in Lights)
         {
             //l.Door = this;
@@ -36,6 +40,7 @@ public class Door : MonoBehaviour
         // we can call level end sequence
         //GetComponent<Renderer>().material.color = new Color(0, 1, 0, 1);
         _source.PlayOneShot(AudioClip);
+        _triggered = true; 
         if (EndLevel)
         {
             GetComponent<Renderer>().enabled = true;
@@ -45,6 +50,14 @@ public class Door : MonoBehaviour
         {
             GetComponent<Renderer>().enabled = false;
             GetComponent<Collider>().enabled = false;
+        }
+    }
+
+    public void DoorSubtitles(Collider other)
+    {
+        if (other.GetComponent<SubtitleSystem>() && _triggered)
+        {
+            other.GetComponent<SubtitleSystem>().AddSubtitle(_subtitleComponent);
         }
     }
 }

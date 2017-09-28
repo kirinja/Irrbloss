@@ -22,11 +22,13 @@ public class EnemyAI : MonoBehaviour
 
     private bool _countUp = true;
 
-    public String SubtitleSound;
+    //public String SubtitleSound;
+    private SubtitleComponent _subtitleComponent;
 
 	// Use this for initialization
     void Start()
     {
+        _subtitleComponent = GetComponent<SubtitleComponent>();
         _agent = GetComponent<NavMeshAgent>();
         _agent.destination = Targets[_currentTarget].position;
 
