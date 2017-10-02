@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using UnityEngine.AI;
+using System.Collections; 
 
 public class EnemyAI : MonoBehaviour
 {
@@ -35,6 +36,9 @@ public class EnemyAI : MonoBehaviour
 	// Update is called once per frame
 	void Update ()
 	{
+		var window = GameObject.Find ("Warning");
+		window.GetComponent<WarningScreen> ().checkEnemyPosition (transform); //Anropar från enemy fiendens transform (position)
+
         // makes enemy move between targets
 	    float t = (transform.position - Targets[_currentTarget].position).magnitude;
 
@@ -124,6 +128,8 @@ public class EnemyAI : MonoBehaviour
             {
                 _player.Kill();
                 Debug.Log("Kill player");
+				PopupText.showPopup ("Du dog. Försök igen!");
+
             }
         }
     }

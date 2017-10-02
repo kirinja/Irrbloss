@@ -50,6 +50,8 @@ public class LightSource : MonoBehaviour
 
             //Door.CheckLevelComplete();
             _source.PlayOneShot(AudioClip);
+
+
         }
 	}
 
@@ -68,6 +70,7 @@ public class LightSource : MonoBehaviour
                 var child = transform.Find("PS_Light02");
                 var ps = child.Find("Cirlce01");
                 ps.GetComponent<ParticleSystem>().Play(true);
+				PopupText.showPopup ("Ett ljus tändes!");
                 //GetComponent<Light>().enabled = true;
                 
                 //Door.CheckLevelComplete();

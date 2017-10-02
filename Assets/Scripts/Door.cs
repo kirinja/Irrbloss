@@ -37,11 +37,14 @@ public class Door : MonoBehaviour
         {
             GetComponent<Renderer>().enabled = true;
             GetComponent<Collider>().enabled = true;
+
         }
         else
         {
             GetComponent<Renderer>().enabled = false;
+			PopupText.showPopup ("En ny dörr öppnades!");
             GetComponent<Collider>().enabled = false;
+
         }
     }
 }
