@@ -29,6 +29,8 @@ public class EnemyAI : MonoBehaviour
     void Start()
     {
         _subtitleComponent = GetComponent<SubtitleComponent>();
+        //_subtitleComponent.SaveData("Enemy");
+        _subtitleComponent.LoadData("Enemy");
         _agent = GetComponent<NavMeshAgent>();
         _agent.destination = Targets[_currentTarget].position;
 

@@ -17,6 +17,8 @@ public class Door : MonoBehaviour
 	void Start ()
 	{
 	    _subtitleComponent = GetComponent<SubtitleComponent>();
+        //_subtitleComponent.SaveData(!EndLevel ? "Door" : "Portal");
+        _subtitleComponent.LoadData(!EndLevel ? "Door" : "Portal");
         foreach (var l in Lights)
         {
             //l.Door = this;

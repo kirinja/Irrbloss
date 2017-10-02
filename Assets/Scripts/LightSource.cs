@@ -32,7 +32,9 @@ public class LightSource : MonoBehaviour
 	void Start ()
 	{
 	    _subtitleComponent = GetComponent<SubtitleComponent>();
-	    _source = gameObject.AddComponent<AudioSource>();
+        //_subtitleComponent.SaveData("LightSource");
+        _subtitleComponent.LoadData("LightSource");
+        _source = gameObject.AddComponent<AudioSource>();
 	    _particleSystem = GetComponentInChildren<ParticleSystem>();
 	}
 	

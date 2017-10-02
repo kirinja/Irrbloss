@@ -609,6 +609,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Text: Light Flickers
   Color: {r: 1, g: 0.9508113, b: 0.28676468, a: 0}
+  TimeOnScreen: 5
 --- !u!114 &114525076298769804
 MonoBehaviour:
   m_ObjectHideFlags: 1

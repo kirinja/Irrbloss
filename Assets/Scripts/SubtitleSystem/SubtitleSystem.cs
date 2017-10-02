@@ -76,8 +76,7 @@ public class SubtitleSystem : MonoBehaviour {
     {
         if (_subtitles.Count >= MaxSubtitlesOnScreen)
             _subtitles.Dequeue();
-
-        _subtitles.Enqueue(new Subtitle(subComp.Text, SubtitleTimer, subComp.Color));
+        _subtitles.Enqueue(new Subtitle(subComp.Data.Text, subComp.Data.TimeOnScreen, subComp.Data.Color));
     }
 
     private void RemoveSubtitle()
