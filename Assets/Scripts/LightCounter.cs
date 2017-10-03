@@ -22,11 +22,13 @@ public class LightCounter : MonoBehaviour
 
     private void OnTriggerExit(Collider other)
     {
+        if (!other.CompareTag("Player") || other.isTrigger) return;
         Text.text = "";
     }
 
     private void OnTriggerStay(Collider other)
     {
+        if (!other.CompareTag("Player") || other.isTrigger) return;
         int cnt = 0;
         foreach (var l in Lights)
         {

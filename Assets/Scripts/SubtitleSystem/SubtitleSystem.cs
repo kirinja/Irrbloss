@@ -11,7 +11,7 @@ public class SubtitleSystem : MonoBehaviour {
     // need an array of timers, one for each subtitle (Make seperate class that holds a time and a string and counts down)
 
     // need to poll what stuff should display subtitles somehow
-    public float SubtitleTimer = 6.0f;
+    //public float SubtitleTimer = 6.0f;
     public int MaxSubtitlesOnScreen = 4;
     private Text _subtitleText;
 
@@ -30,7 +30,8 @@ public class SubtitleSystem : MonoBehaviour {
 	{
         foreach (var s in _subtitles)
         {
-            // cant use a queue to update the values inside, can only read
+            // cant use a queue anymore since each subtitle use a different time and we can' ensure that the first element should always be removed
+            // have to change to a list and maintain it manually instead
             s.Update(Time.deltaTime);
             if (!s.ShouldBeRemoved()) continue;
             _subtitles.Dequeue();
@@ -64,13 +65,13 @@ public class SubtitleSystem : MonoBehaviour {
         _subtitles.Enqueue(subtitle);
     }
 
-    public void AddSubtitle(String text, float time, Color color)
-    {
-        if (_subtitles.Count >= MaxSubtitlesOnScreen)
-            _subtitles.Dequeue();
+    //public void AddSubtitle(String text, float time, Color color)
+    //{
+    //    if (_subtitles.Count >= MaxSubtitlesOnScreen)
+    //        _subtitles.Dequeue();
 
-        _subtitles.Enqueue(new Subtitle(text, SubtitleTimer, color));
-    }
+    //    _subtitles.Enqueue(new Subtitle(text, SubtitleTimer, color));
+    //}
 
     public void AddSubtitle(SubtitleComponent subComp)
     {

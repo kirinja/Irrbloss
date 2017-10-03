@@ -53,13 +53,13 @@ public class EnemyAI : MonoBehaviour
 
 	        if (_currentChaseDistance >= MaxChaseDistance)
 	        {
-                Debug.Log("Chased for too long, resetting patrol");
+                //Debug.Log("Chased for too long, resetting patrol");
 	            _agent.destination = Targets[_currentTarget].position;
 	            return;
 	        }
 
             // maybe increase speed if found
-            Debug.Log("Found player, chase");
+            //Debug.Log("Found player, chase");
 	        _agent.destination = _player.transform.position;
 	        _agent.speed *= 2.5f;
 
