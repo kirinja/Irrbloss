@@ -173,6 +173,7 @@ GameObject:
   - component: {fileID: 65661961885542092}
   - component: {fileID: 114525076298769804}
   - component: {fileID: 114233140936659630}
+  - component: {fileID: 114211583719705054}
   m_Layer: 0
   m_Name: Light Source
   m_TagString: Untagged
@@ -596,6 +597,23 @@ Light:
   m_UseColorTemperature: 0
   m_ShadowRadius: 0
   m_ShadowAngle: 0
+--- !u!114 &114211583719705054
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1809305367129290}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 908cdfeda7b3eae43a537eff6041bc24, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  UiSprite: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
+  Canvas: {fileID: 0}
+  minDistance: 0
+  maxDistance: 50
+  minDistanceScale: 1.5
+  maxDistanceScale: 0.5
 --- !u!114 &114233140936659630
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -607,9 +625,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 04cb6fb72ef8f03499bfd3882f6264b8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Text: Light Flickers
-  Color: {r: 1, g: 0.9508113, b: 0.28676468, a: 0}
-  TimeOnScreen: 5
+  Data:
+    Text: 
+    Color: {r: 0, g: 0, b: 0, a: 0}
+    TimeOnScreen: 0
 --- !u!114 &114525076298769804
 MonoBehaviour:
   m_ObjectHideFlags: 1

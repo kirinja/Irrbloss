@@ -60929,17 +60929,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   filter: {fileID: 4800000, guid: e43c41ea936cadc49b0656246a82ebc5, type: 3}
   wobbTex: {fileID: 2800000, guid: b1d4e41c1d66e904ba9d9b03a29801c4, type: 3}
-  wobbScale: 0
+  wobbScale: 0.25
   wobbPower: 0.005
-  edgeSize: 2
+  edgeSize: 3
   edgePower: 3
-  paperDataset:
-  - paperTex: {fileID: 2800000, guid: a5d643e000ebc504d91d669771ed0541, type: 3}
-    paperScale: 1
-    paperPower: 2
-  - paperTex: {fileID: 2800000, guid: 7b81a6141caf8234b95e42ca70418bf2, type: 3}
-    paperScale: 0.5
-    paperPower: 2
+  paperDataset: []
 --- !u!1 &1946674444 stripped
 GameObject:
   m_PrefabParentObject: {fileID: 100000, guid: 1e4eb570e690ea942830971a091d20ec, type: 3}
