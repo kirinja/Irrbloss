@@ -44,7 +44,7 @@ public class SoundIcon : MonoBehaviour
         // create the ui object and place under canvas
 	    Player = GameObject.FindGameObjectWithTag("Player").transform;
 	    Canvas = GameObject.Find("UI").GetComponent<Canvas>(); // find the canvas in the scene instead of applying it manually in the editor
-	    IconGO = new GameObject(); //Create the GameObject
+	    IconGO = new GameObject("Light Source"); //Create the GameObject
 	    Image newImage = IconGO.AddComponent<Image>(); //Add the Image Component script
 	    newImage.sprite = UiSprite; //Set the Sprite of the Image Component on the new GameObject
 	    IconGO.GetComponent<RectTransform>().SetParent(Canvas.transform); //Assign the newly created Image GameObject as a Child of the Parent Panel.
@@ -102,11 +102,22 @@ public class SoundIcon : MonoBehaviour
 	            ((ViewportPosition.x * canvasRect.sizeDelta.x) - (canvasRect.sizeDelta.x * 0.5f)),
 	            ((ViewportPosition.y * canvasRect.sizeDelta.y) - (canvasRect.sizeDelta.y * 0.5f)));
 
-	        //now you can set the position of the ui element
-	        IconGO.GetComponent<RectTransform>().anchoredPosition = WorldObject_ScreenPosition;
 
-	        //var distance = (transform.position - Player.position).magnitude;
-	        var norm = (distance - minDistance) / (maxDistance - minDistance);
+            // this clamps the icons inside the viewport
+            var scaler = Canvas.GetComponent<CanvasScaler>();
+            var clampX = Mathf.Clamp(WorldObject_ScreenPosition.x, -(scaler.referenceResolution.x / 2f), (scaler.referenceResolution.x / 2f));
+	        var clampY = Mathf.Clamp(WorldObject_ScreenPosition.y, -(scaler.referenceResolution.y / 2f), (scaler.referenceResolution.y / 2f));
+
+            // we need to position it correctly depending on where we are looking
+            // if we are looking away and have the object behind us then the UI should be rendered at the bottom of the screen
+            // we also need to find icons that fit each category
+
+	        //now you can set the position of the ui element
+	        //IconGO.GetComponent<RectTransform>().anchoredPosition = WorldObject_ScreenPosition;
+	        IconGO.GetComponent<RectTransform>().anchoredPosition = new Vector2(clampX, clampY);
+
+            //var distance = (transform.position - Player.position).magnitude;
+            var norm = (distance - minDistance) / (maxDistance - minDistance);
 	        norm = Mathf.Clamp01(norm);
             
 	        var minScale = Vector3.one * maxDistanceScale;
