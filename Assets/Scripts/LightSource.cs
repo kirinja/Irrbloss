@@ -9,6 +9,7 @@ public class LightSource : MonoBehaviour
     private bool _enabled = false;
     private ParticleSystem _particleSystem;
 
+
     public bool Enabled
     {
         //get { return GetComponent<Light>().enabled; }
@@ -51,6 +52,9 @@ public class LightSource : MonoBehaviour
             //Door.CheckLevelComplete();
             _source.PlayOneShot(AudioClip);
         }
+
+
+
 	}
 
     private void OnTriggerEnter(Collider other)
@@ -72,6 +76,7 @@ public class LightSource : MonoBehaviour
                 
                 //Door.CheckLevelComplete();
                 _source.PlayOneShot(AudioClip);
+
             }
         }
     }

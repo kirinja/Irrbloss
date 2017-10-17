@@ -608,6 +608,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   AudioClip: {fileID: 0}
   LightLevelToActivate: 0.9
+  text: {fileID: 0}
+  time: 3
 --- !u!198 &198148763986274192
 ParticleSystem:
   m_ObjectHideFlags: 1

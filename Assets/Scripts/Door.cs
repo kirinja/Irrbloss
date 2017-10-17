@@ -7,6 +7,7 @@ public class Door : MonoBehaviour
     public AudioClip AudioClip;
     public bool EndLevel = false;
 
+
 	// Use this for initialization
 	void Start ()
     {
@@ -42,6 +43,7 @@ public class Door : MonoBehaviour
         {
             GetComponent<Renderer>().enabled = false;
             GetComponent<Collider>().enabled = false;
+
         }
     }
 }
