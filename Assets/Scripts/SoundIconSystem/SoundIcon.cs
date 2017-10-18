@@ -20,6 +20,12 @@ public class SoundIcon : MonoBehaviour
     public float minDistanceScale = 1.0f;
     public float maxDistanceScale = 0.1f;
 
+    [Tooltip("If -1 then show forever")]
+    public float TimeOnScreen = 3.0f;
+
+    private float _timer;
+    private bool _show = true;
+
     // convert from world space to screen space
     // we should probably use the distance in world space to scale the image
     //public Vector2 WorldToScreen()
@@ -49,7 +55,7 @@ public class SoundIcon : MonoBehaviour
 	    newImage.sprite = UiSprite; //Set the Sprite of the Image Component on the new GameObject
 	    IconGO.GetComponent<RectTransform>().SetParent(Canvas.transform); //Assign the newly created Image GameObject as a Child of the Parent Panel.
         IconGO.GetComponent<RectTransform>().anchoredPosition = Vector2.zero;
-	    IconGO.SetActive(true); //Activate the GameObject
+	    IconGO.SetActive(false); // start the UI element as inactive and activate it later
         
     }
 	
@@ -73,6 +79,8 @@ public class SoundIcon : MonoBehaviour
         //https://gamedev.stackexchange.com/questions/102431/how-to-create-gui-image-with-script
         //http://answers.unity3d.com/questions/551461/how-to-scale-an-object-between-two-values-over-dis.html
 
+        // Need to make it so this thing activates when we enable the light
+        // could just have the component disabled and enable it in the light script?
 
         // need to take player position into consideration for both scale and correct placement on the screen
         // example: when sound source is behind the player we still want the icon to display, but at the bottom of the screen, indicating it's behind the player
@@ -81,12 +89,12 @@ public class SoundIcon : MonoBehaviour
         var distance = (transform.position - Player.position).magnitude;
 
         // we can also make sure this doesnt activate until the subtitle does, and disables itself when the subtitle timer runs out?
-	    if (distance >= maxDistance)
+	    if (distance >= maxDistance || !_show)
 	    {
             // disable the icon if out of the given area
             IconGO.SetActive(false);
 	    }
-	    else
+	    else if (_show)
 	    {
             IconGO.SetActive(true);
 	        //first you need the RectTransform component of your canvas
@@ -102,6 +110,8 @@ public class SoundIcon : MonoBehaviour
 	            ((ViewportPosition.x * canvasRect.sizeDelta.x) - (canvasRect.sizeDelta.x * 0.5f)),
 	            ((ViewportPosition.y * canvasRect.sizeDelta.y) - (canvasRect.sizeDelta.y * 0.5f)));
 
+            // here we should calculate the correct position depending on where the camera is pointing and where the player is located?;
+            // we already have the viewport position saved but we need to take rotation of the camera into consideration
 
             // this clamps the icons inside the viewport
             var scaler = Canvas.GetComponent<CanvasScaler>();
@@ -125,6 +135,14 @@ public class SoundIcon : MonoBehaviour
 
 	        //IconGO.GetComponent<RectTransform>().localScale = new Vector3(Scale, Scale, 1);
 	        IconGO.GetComponent<RectTransform>().localScale = Vector3.Lerp(minScale, maxScale, norm);
+
+            // timer for how long the icon should be on screen
+	        if (!(TimeOnScreen >= 0)) return;
+	        _timer += Time.deltaTime;
+	        if (_timer > TimeOnScreen)
+	        {
+	            _show = false;
+	        }
 	    }
 	}
 }

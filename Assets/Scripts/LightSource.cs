@@ -12,6 +12,8 @@ public class LightSource : MonoBehaviour
 
     //public String SubtitleSound;
     private SubtitleComponent _subtitleComponent;
+
+    private SoundIcon _soundIcon;
     public bool Enabled
     {
         //get { return GetComponent<Light>().enabled; }
@@ -36,6 +38,8 @@ public class LightSource : MonoBehaviour
         _subtitleComponent.LoadData("LightSource");
         _source = gameObject.AddComponent<AudioSource>();
 	    _particleSystem = GetComponentInChildren<ParticleSystem>();
+	    _soundIcon = GetComponent<SoundIcon>();
+	    _soundIcon.enabled = false;
 	}
 	
 	// Update is called once per frame
@@ -81,6 +85,7 @@ public class LightSource : MonoBehaviour
                 //Door.CheckLevelComplete();
                 _source.PlayOneShot(AudioClip);
                 other.GetComponent<SubtitleSystem>().AddSubtitle(_subtitleComponent);
+                _soundIcon.enabled = true; // enable icon
             }
         }
     }
