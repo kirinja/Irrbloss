@@ -2184,12 +2184,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 908cdfeda7b3eae43a537eff6041bc24, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  UiSprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
+  UiSprite: {fileID: 21300000, guid: d36aba24e78d63e4a8edf4649df2a038, type: 3}
   Canvas: {fileID: 0}
   minDistance: 1
-  maxDistance: 50
-  minDistanceScale: 1
-  maxDistanceScale: 0.1
+  maxDistance: 75
+  minDistanceScale: 1.1
+  maxDistanceScale: 0.2
   TimeOnScreen: -1
 --- !u!1001 &72268301
 Prefab:
@@ -27601,12 +27601,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 908cdfeda7b3eae43a537eff6041bc24, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  UiSprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
+  UiSprite: {fileID: 21300000, guid: d36aba24e78d63e4a8edf4649df2a038, type: 3}
   Canvas: {fileID: 0}
   minDistance: 1
-  maxDistance: 10
-  minDistanceScale: 1
-  maxDistanceScale: 0.1
+  maxDistance: 75
+  minDistanceScale: 1.1
+  maxDistanceScale: 0.2
   TimeOnScreen: -1
 --- !u!1001 &881530952
 Prefab:
@@ -39006,6 +39006,12 @@ Prefab:
       propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 114211583719705054, guid: c48e934fad9178544b9c76d1510a99fe,
+        type: 2}
+      propertyPath: UiSprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 8a614027281c27447a75869b2812edd4,
+        type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: c48e934fad9178544b9c76d1510a99fe, type: 2}
   m_IsPrefabParent: 0

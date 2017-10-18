@@ -608,12 +608,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 908cdfeda7b3eae43a537eff6041bc24, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  UiSprite: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
+  UiSprite: {fileID: 21300000, guid: 8a614027281c27447a75869b2812edd4, type: 3}
   Canvas: {fileID: 0}
   minDistance: 0
   maxDistance: 50
   minDistanceScale: 1.5
   maxDistanceScale: 0.5
+  TimeOnScreen: 3
 --- !u!114 &114233140936659630
 MonoBehaviour:
   m_ObjectHideFlags: 1
