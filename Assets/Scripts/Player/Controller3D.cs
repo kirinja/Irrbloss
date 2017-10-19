@@ -127,11 +127,20 @@ public class Controller3D : MonoBehaviour
         Debug.Log(LightLevel);
     }
 
+
+	public GameObject deadText;
     public void Kill()
     {
         // respawn
+		deadText.SetActive(true);
+		Invoke ("distext", 3f);
         transform.position = _spawnPoint;
     }
+	private void distext(){
+		deadText.SetActive(false);
+	}
+
+
 
     private void OnCollisionEnter(Collision collision)
     {
