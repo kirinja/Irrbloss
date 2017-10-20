@@ -25,4 +25,24 @@ public class Menu : MonoBehaviour {
     {
         Application.Quit();
     }
+
+    public void LoadOptions()
+    {
+        SceneManager.LoadScene("Options");
+    }
+
+    public void LoadSubDoor()
+    {
+        SceneManager.LoadScene("SubDoor");
+    }
+
+    public void LoadSubEnemy()
+    {
+        SceneManager.LoadScene("SubEnemy");
+    }
+
+    public void LoadSubLight()
+    {
+        SceneManager.LoadScene("SubLight");
+    }
 }

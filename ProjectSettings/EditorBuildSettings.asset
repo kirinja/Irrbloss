@@ -9,8 +9,20 @@ EditorBuildSettings:
     path: Assets/_Scenes/Menu.unity
     guid: f5320bf5cd09c574cae9a2a605de87b6
   - enabled: 1
+    path: Assets/_Scenes/Options.unity
+    guid: d62c2cc649cb23a43b166f2c0ee60573
+  - enabled: 1
     path: Assets/_Scenes/Instruktion.unity
     guid: c069a195102583f4db971fc5f3459e25
   - enabled: 1
     path: Assets/_Scenes/FinishedLevel.unity
     guid: cdb530c358e4dfb40b74828c46d8a11e
+  - enabled: 1
+    path: Assets/_Scenes/SubDoor.unity
+    guid: a6770ffcc091bac458fa0ea631437dfa
+  - enabled: 1
+    path: Assets/_Scenes/SubEnemy.unity
+    guid: 0388905fcba000842b68429cf41d0ee7
+  - enabled: 1
+    path: Assets/_Scenes/SubLight.unity
+    guid: 6b441143923e3d84b9e911a5f6dad300
