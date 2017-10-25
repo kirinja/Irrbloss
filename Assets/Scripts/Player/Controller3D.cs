@@ -28,7 +28,7 @@ public class Controller3D : MonoBehaviour
 	{
 	    _velocity = Vector3.zero;
 	    LightLevel = 1.0f;
-	    _spawnPoint = transform.position;
+	    _spawnPoint = new Vector3(0, 2, 0);
 
 	    Cursor.lockState = CursorLockMode.Locked;
 	    Cursor.visible = false;

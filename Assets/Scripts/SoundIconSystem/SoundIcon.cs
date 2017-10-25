@@ -62,16 +62,6 @@ public class SoundIcon : MonoBehaviour
 	// Update is called once per frame
 	void Update ()
 	{
-        //WorldPosition = transform.position;
-        //ScreenPosition = WorldToScreen();
-        //Scale = ScaleSprite();
-
-        //IconGO.GetComponent<RectTransform>().anchoredPosition = ScreenPosition;
-        //IconGO.GetComponent<RectTransform>().localScale = new Vector3(Scale, Scale, 1);
-
-        ////this is the ui element
-        //RectTransform UI_Element;
-
         //http://answers.unity3d.com/questions/799616/unity-46-beta-19-how-to-convert-from-world-space-t.html
         //http://answers.unity3d.com/questions/842616/how-to-place-image-in-world-space-canvas-by-mousec.html
         //https://www.youtube.com/watch?v=Av8fL2PO2KQ&app=desktop
@@ -88,13 +78,18 @@ public class SoundIcon : MonoBehaviour
         // we also need to add a little arrow that indicates which direction it's coming from (compare positions in 3d space)
         var distance = (transform.position - Player.position).magnitude;
 
+        //http://answers.unity3d.com/questions/720447/if-game-object-is-in-cameras-field-of-view.html
+        // only render the icons when they are on screen, cheap out method of doing it since the real one is buggy
+        Vector3 screenPoint = Camera.main.WorldToViewportPoint(transform.position);
+	    bool onScreen = screenPoint.z > 0 && screenPoint.x > 0 && screenPoint.x < 1 && screenPoint.y > 0 && screenPoint.y < 1;
+
         // we can also make sure this doesnt activate until the subtitle does, and disables itself when the subtitle timer runs out?
-	    if (distance >= maxDistance || !_show)
+        if (distance >= maxDistance || !_show || !onScreen)
 	    {
             // disable the icon if out of the given area
             IconGO.SetActive(false);
 	    }
-	    else if (_show)
+	    else if (_show && onScreen)
 	    {
             IconGO.SetActive(true);
 	        //first you need the RectTransform component of your canvas
@@ -118,10 +113,7 @@ public class SoundIcon : MonoBehaviour
             var clampX = Mathf.Clamp(WorldObject_ScreenPosition.x, -(scaler.referenceResolution.x / 2f), (scaler.referenceResolution.x / 2f));
 	        var clampY = Mathf.Clamp(WorldObject_ScreenPosition.y, -(scaler.referenceResolution.y / 2f), (scaler.referenceResolution.y / 2f));
 
-            // we need to position it correctly depending on where we are looking
-            // if we are looking away and have the object behind us then the UI should be rendered at the bottom of the screen
-            // we also need to find icons that fit each category
-
+            
 	        //now you can set the position of the ui element
 	        //IconGO.GetComponent<RectTransform>().anchoredPosition = WorldObject_ScreenPosition;
 	        IconGO.GetComponent<RectTransform>().anchoredPosition = new Vector2(clampX, clampY);

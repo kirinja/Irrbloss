@@ -35,7 +35,18 @@ public class EndLevel : MonoBehaviour
             other.GetComponent<Collider>().enabled = false;
             
             _end = true;
+
+            StartCoroutine(EndGame());
         }
+    }
+
+
+    private IEnumerator EndGame()
+    {
+        // end the game 5 seconds after you step into the light beam
+        yield return new WaitForSeconds(5.0f);
+        Debug.Log("Ending game");
+        Application.Quit();
     }
 
 }
