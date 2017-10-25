@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class EndLevel : MonoBehaviour
 {
@@ -46,7 +47,10 @@ public class EndLevel : MonoBehaviour
         // end the game 5 seconds after you step into the light beam
         yield return new WaitForSeconds(5.0f);
         Debug.Log("Ending game");
-        Application.Quit();
+        Cursor.lockState = CursorLockMode.None;
+	    Cursor.visible = true;
+        SceneManager.LoadScene("Menu");
+        // Application.Quit();
     }
 
 }
